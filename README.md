@@ -173,3 +173,49 @@ Pandas 복습
   - 시프트 학습(`shift()`)
   - 시간대 처리 학습(`pytz()`)
   - 기간과 기간 연산 학습
+
+---
+
+## Day 4 (2021-09-09)
+
+- 리샘플링 학습
+
+  * 리샘플링(Resampling): 시계열의 빈도 변환
+  * 다운샘플링(Down sampling): 상위 빈도 데이터를 하위 빈도 데이터로 집계
+  * 업샘플링(Up sampling): 하위 빈도 데이터를 상위 빈도 데이터로 집계
+
+  - `freq` | 리샘플링 빈도
+  - `axis` | 리샘플링 축(기본값 `axis=0`)
+  - `fill_method` | 업샘플링시 보간 수행(`None`, `ffill`, `bfill`)
+  - `closed` | 다운샘플링 시 각 간격의 포함 위치(`right`, `left`)
+  - `label` | 다운샘플링 시 각 집계된 결과 라벨 결정(`right`, `left`)
+  - `loffset` | 나뉜 그룹의 라벨을 맞추기 위한 오프셋
+  - `limit` | 보간법을 사용할 때 보간을 적용할 최대 기간
+  - `kind` |  기간(`period`) 또는 타임스탬프(`timestamp`) 집계 구분
+  - `convention` | 기간을 리샘플링할 때 하위 빈도 기간에서 상위 빈도로 변환 시 방식(`start`또는`end`)
+
+- 무빙 윈도우 학습
+
+- 데이터 읽기 및 저장 학습
+  - `read_csv` | 파일, URL, 객체로부터 구분된 데이터 읽기(기본 구분자:',')
+  - `read_table` | 파일, URL, 객체로부터 구분된 데이터 읽기(기본 구분자:'\t')
+  - `read_fwf` | 고정폭 컬럼 형식에서 데이터 읽기(구분자 없는 데이터)
+  - `read_clipboard` | 클립보드에 있는 데이터 읽기. 웹페이지에 있는 표를 읽어올 때 유용
+  - `read_excel` | 엑셀 파일(xls, xlsx)에서 표 형식 데이터 읽기
+  - `read_hdf` | Pandas에서 저장한 HDFS 파일의 데이터 읽기
+  - `read_html` | HTML 문서 내의 모든 테이블 데이터 읽기
+  - `read_json` | JSON에서 데이터 읽기
+  - `read_msgpack` | 메시지팩 바이너리 포맷으로 인코딩된 pandas 데이터 읽기
+  - `read_pickle` | 파이썬 피클 포맷으로 저장된 객체 읽기
+  - `read_sas` | SAS 시스템의 사용자 정의 저장 포멧 데이터 읽기
+  - `read_sql` | SQL 질의 결과를 DataFrame 형식으로 읽기
+  - `read_stata` | Stata 파일에서 데이터 읽기
+  - `read_feather` | Feather 바이너리 파일 포맷의 데이터 읽기
+
+  - 텍스트 파일 읽기/쓰기(`read_csv()`, `%%writefile`
+  - 이진 데이터 파일 읽기/쓰기(`to_pickle()`, `read_pickle()`, `HDFStore()`, `to_hdf()`, read_hdf()`, `to_excel()`
+
+- 데이터 정제학습
+  - 누락값 처리 학습(`dropna()`, `fillna()`, `np.nan`, `None`)
+  - 중복제거 학습(`duplicated()`, `drop_duplicateds()`)
+  - 값 치환학습(`replace()`)
