@@ -219,3 +219,34 @@ Pandas 복습
   - 누락값 처리 학습(`dropna()`, `fillna()`, `np.nan`, `None`)
   - 중복제거 학습(`duplicated()`, `drop_duplicateds()`)
   - 값 치환학습(`replace()`)
+
+---
+
+# Day 5 (2021-10-04)
+
+- melt
+  - id_vars : 속성으로 지정한 열을 제외한 나머지 정보열이 variable 열로, 정보 데이터는 value열로 정리됨
+  - value_vars : 속성을 지정하면 지정한 열만을 대상으로 피벗 / 열이 2개이상이라면 리스트로 묶음
+  - var_name : variable 표시되는 열이름 변경
+  - var_name : value 표시되는 열이름 변경 
+
+- to_numeric()
+  - 문자열을 숫자로 변환가능
+  - errors 속성을 사용하여 어느정도 오류를 제어할 수 있음
+    - raise : 기본값
+    - ignore : 오류 발생시 무시하고 가능한 것만 진행
+    - coerce : 오류 발생시 NaN으로 변경하고 진행
+
+- agg()
+  - 판다스에서 제공하는 집계함수가 아닌 다른 함수를 사용하기 위함
+  - 함수의 인수가 2개일 경우 2번째 인수의 이름과 변경값을 넣어주어 따로 실행
+```
+def my_mean_diff(values, diff_value):
+    n = len(values)
+    total = 0
+    for value in values:
+        total += value
+    mean = total / n
+    return mean - diff_value
+age_mean_diff = df.groupby('year').lifeExp.agg(my_mean_diff, diff_value = global_mean)
+```
