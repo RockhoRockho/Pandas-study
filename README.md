@@ -248,5 +248,24 @@ def my_mean_diff(values, diff_value):
         total += value
     mean = total / n
     return mean - diff_value
+    
 age_mean_diff = df.groupby('year').lifeExp.agg(my_mean_diff, diff_value = global_mean)
 ```
+
+------
+# Day 6 (2021-10-07)
+
+- transform()
+  - 브로드캐스팅을 실행해야 하는 사용자 정의 함수를 실행해야 한다면 transform() 함수를 사용한다.
+
+```
+def my_zscore(x):
+    return (x - x.mean()) / x.std()
+
+df['zscore'] = df.groupby('year').lifeExp.transform(my_zscore)
+```
+
+- permutation()
+  - 원본이 유지되고 배열을 복사   
+- shuffle()
+  - 원본도 수정하고 배열을 복사   
